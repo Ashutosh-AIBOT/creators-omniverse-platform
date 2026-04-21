@@ -215,8 +215,11 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Enable WhiteNoise compression and caching
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# Enable WhiteNoise compression (Safer version for Render)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
+# CSRF Trusted Origins for Render
+CSRF_TRUSTED_ORIGINS = ["https://*.onrender.com"]
 # --------------------------------------------------
 # LOGGING
 # --------------------------------------------------
