@@ -3,7 +3,8 @@ services:
     name: creators-omniverse
     env: python
     buildCommand: ./build.sh
-    startCommand: daphne core.asgi:application --port 10000 --bind 0.0.0.0
+    # Crucial: Run migrations at STARTUP for SQLite on Render
+    startCommand: python manage.py migrate && daphne core.asgi:application --port 10000 --bind 0.0.0.0
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
