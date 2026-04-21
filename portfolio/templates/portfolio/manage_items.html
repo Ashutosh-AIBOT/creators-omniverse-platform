@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'portfolio/dashboard.css' %}">
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">Portfolio Omni</div>
+        <nav>
+            <a href="{% url 'portfolio:dashboard' %}" class="nav-link">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="{% url 'portfolio:manage_items' 'project' %}" class="nav-link {% if item_type == 'Project' %}active{% endif %}">
+                <i class="fas fa-code"></i> Projects
+            </a>
+            <a href="{% url 'portfolio:manage_items' 'skill' %}" class="nav-link {% if item_type == 'Skill' %}active{% endif %}">
+                <i class="fas fa-bolt"></i> Skills
+            </a>
+            <a href="{% url 'portfolio:manage_items' 'experience' %}" class="nav-link {% if item_type == 'Experience' %}active{% endif %}">
+                <i class="fas fa-briefcase"></i> Experience
+            </a>
+            <a href="{% url 'portfolio:manage_items' 'link' %}" class="nav-link {% if item_type == 'Link' %}active{% endif %}">
+                <i class="fas fa-link"></i> Social Links
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-row">
+            <h1>Manage {{ item_type }}s</h1>
+            <a href="{% url 'portfolio:dashboard' %}" class="nav-link">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+
+        <div class="management-grid" style="grid-template-columns: 1fr 1fr;">
+            <!-- Form Card -->
+            <section class="content-section">
+                <h3>Add New {{ item_type }}</h3>
+                <form method="post" enctype="multipart/form-data" style="margin-top: 1.5rem;">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3" style="margin-bottom: 1.5rem;">
+                            <label class="form-label" style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn-add" style="width: 100%; border: none; cursor: pointer;">
+                        Save {{ item_type }}
+                    </button>
+                </form>
+            </section>
+
+            <!-- List Card -->
+            <section class="content-section">
+                <h3>Existing {{ item_type }}s</h3>
+                <div class="item-list" style="margin-top: 1.5rem;">
+                    {% for item in items %}
+                        <div class="item-card">
+                            <div class="item-info">
+                                <h4>
+                                    {% if item_type == 'Project' %}{{ item.name }}
+                                    {% elif item_type == 'Skill' %}{{ item.name }}
+                                    {% elif item_type == 'Experience' %}{{ item.role }} at {{ item.company }}
+                                    {% elif item_type == 'Link' %}{{ item.platform }}
+                                    {% endif %}
+                                </h4>
+                                <span>
+                                    {% if item_type == 'Project' %}{{ item.link }}
+                                    {% elif item_type == 'Skill' %}{{ item.level }}%
+                                    {% elif item_type == 'Experience' %}{{ item.start_date|date:"Y" }} - Present
+                                    {% elif item_type == 'Link' %}{{ item.url }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="actions">
+                                <i class="fas fa-trash" style="color: #f87171; cursor: pointer; opacity: 0.7;"></i>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p style="color: var(--text-secondary);">No {{ item_type }}s added yet.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<style>
+    .form-control, .form-range {
+        background: var(--glass) !important;
+        border: 1px solid var(--border) !important;
+        color: white !important;
+        border-radius: 12px !important;
+        padding: 0.8rem !important;
+    }
+    .form-control:focus {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+    }
+</style>
+{% endblock %}

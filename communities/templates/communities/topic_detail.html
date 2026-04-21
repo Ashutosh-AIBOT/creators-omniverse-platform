@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .topic-detail { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+    .btn-create { background: #4f46e5; color: white; padding: 12px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; border: none; }
+    .group-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+    .group-card { background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 15px; position: relative; }
+    .privacy-tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 50px; font-weight: 800; text-transform: uppercase; }
+    .tag-public { background: #ecfdf5; color: #059669; }
+    .tag-private { background: #fff1f2; color: #e11d48; }
+    .group-id-badge { font-family: monospace; background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 0.9rem; }
+    
+    .card-actions { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
+    .action-btn { font-size: 0.7rem; padding: 5px 8px; border-radius: 5px; text-decoration: none; font-weight: 800; }
+    .btn-ignore { background: #f3f4f6; color: #666; }
+    .btn-delete { background: #fee2e2; color: #ef4444; }
+</style>
+
+<div class="topic-detail">
+    <div class="header-row">
+        <div>
+            <h1 style="font-size: 2.5rem; font-weight: 800;">{{ topic.name }}</h1>
+            <p style="color: #666;">Explore active communities.</p>
+        </div>
+        <a href="{% url 'communities:create_group' topic.id %}" class="btn-create">+ Create Community</a>
+    </div>
+
+    <div class="group-grid">
+        {% for group in groups %}
+            <div class="group-card">
+                <div class="card-actions">
+                    <a href="{% url 'communities:ignore_group' group.id %}" class="action-btn btn-ignore" title="Hide this group">Ignore</a>
+                    {% if request.user == group.creator or request.user.is_superuser %}
+                        <a href="{% url 'communities:delete_group' group.id %}" class="action-btn btn-delete" onclick="return confirm('Permanently delete this group?')">Delete</a>
+                    {% endif %}
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h3 style="margin: 0 0 5px 0;">{{ group.name }}</h3>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="privacy-tag {% if group.privacy == 'public' %}tag-public{% else %}tag-private{% endif %}">
+                            {{ group.get_privacy_display }}
+                        </span>
+                        <span class="group-id-badge">{{ group.unique_id }}</span>
+                    </div>
+                </div>
+                
+                {% if request.user in group.members.all %}
+                    <a href="{% url 'communities:chat_room' group.id %}" class="btn-create" style="display: block; text-align: center; background: #4f46e5;">Enter Chat</a>
+                {% else %}
+                    <form action="{% url 'communities:join_group' %}" method="post" style="display: flex; gap: 10px;">
+                        {% csrf_token %}
+                        <input type="hidden" name="unique_id" value="{{ group.unique_id }}">
+                        {% if group.privacy == 'private' %}
+                            <input type="password" name="password" placeholder="Password" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 8px;">
+                        {% endif %}
+                        <button type="submit" class="btn-create" style="flex: 1; cursor: pointer;">Join</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <div style="grid-column: 1/-1; text-align: center; padding: 100px; background: #f9fafb; border-radius: 20px;">
+                <p>No groups available. Start one!</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

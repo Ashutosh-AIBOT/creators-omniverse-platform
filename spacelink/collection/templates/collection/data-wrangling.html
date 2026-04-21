@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Wrangling & Cleaning Resources</title>
+    <link rel="stylesheet" href="{% static 'collection/one.css' %}">
+</head>
+<body>
+
+<main class="container">
+
+    <h1>Data Wrangling & Cleaning Resources</h1>
+    <p class="subtitle">Handling Missing Values • Data Transformation • Feature Engineering • Text & Time Series Cleaning</p>
+
+<section>
+    <h2>Level 1: Core Python Libraries</h2>
+    <ul>
+        <li><a href="https://pandas.pydata.org/docs/" target="_blank">Pandas - DataFrames & Series</a></li>
+        <li><a href="https://numpy.org/doc/stable/" target="_blank">NumPy - Arrays & Numerical Operations</a></li>
+        <li><a href="https://docs.python.org/3/library/re.html" target="_blank">re - Regular Expressions for Text Cleaning</a></li>
+        <li><a href="https://www.python.org/dev/peps/pep-0484/" target="_blank">Python Built-in Data Manipulation</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/categorical.html" target="_blank">Categorical Data Handling</a></li>
+        <li><a href="https://docs.python.org/3/library/datetime.html" target="_blank">Datetime Handling in Python</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 2: Handling Missing & Duplicate Data</h2>
+    <ul>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/missing_data.html" target="_blank">Detecting & Handling Missing Values</a></li>
+        <li><a href="https://scikit-learn.org/stable/modules/impute.html" target="_blank">Imputation Techniques - Scikit-learn (Mean, Median, KNN)</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/duplicates.html" target="_blank">Identifying & Removing Duplicates</a></li>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html" target="_blank">dropna() & fillna() Methods</a></li>
+        <li><a href="https://towardsdatascience.com/handling-missing-data-in-python-9f6dfb59f3d2" target="_blank">Advanced Missing Value Handling Strategies</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 3: Data Type Conversion & Transformation</h2>
+    <ul>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/basics.html#data-types" target="_blank">Type Conversion (int, float, category, datetime)</a></li>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html" target="_blank">astype() Method</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/reshaping.html" target="_blank">Data Reshaping - Melt, Pivot, Stack, Unstack</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/aggregation.html" target="_blank">Aggregation & Grouping</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/transform.html" target="_blank">Feature Transformation & Scaling</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 4: Text & String Cleaning</h2>
+    <ul>
+        <li><a href="https://docs.python.org/3/library/re.html" target="_blank">Regex Cleaning with re Library</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/text.html" target="_blank">Pandas String Methods (str.lower(), str.replace(), str.strip())</a></li>
+        <li><a href="https://www.nltk.org/" target="_blank">NLTK - Tokenization, Stopwords, Lemmatization</a></li>
+        <li><a href="https://spacy.io/" target="_blank">spaCy - Text Preprocessing & NLP Cleaning</a></li>
+        <li><a href="https://textblob.readthedocs.io/en/dev/" target="_blank">TextBlob - Sentiment Analysis & Cleaning</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 5: Time Series & Date Cleaning</h2>
+    <ul>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/timeseries.html" target="_blank">Datetime Parsing & Conversion</a></li>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html" target="_blank">to_datetime() Function</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/resampling.html" target="_blank">Resampling & Frequency Conversion</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/timeseries.html#time-zones" target="_blank">Time Zone Handling</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/timeseries.html#moving-window-functions" target="_blank">Rolling & Moving Window Functions</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 6: Data Integration & Merging</h2>
+    <ul>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.merge.html" target="_blank">Merge & Join Datasets</a></li>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html" target="_blank">Concatenation of DataFrames</a></li>
+        <li><a href="https://pandas.pydata.org/docs/user_guide/reshaping.html" target="_blank">Combine & Reshape Multiple Datasets</a></li>
+        <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.update.html" target="_blank">Updating DataFrames</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 7: Data Wrangling Automation Tools</h2>
+    <ul>
+        <li><a href="https://pypi.org/project/pyjanitor/" target="_blank">PyJanitor - Clean & Transform Pipelines</a></li>
+        <li><a href="https://pypi.org/project/dtale/" target="_blank">D-Tale - Interactive Cleaning Interface</a></li>
+        <li><a href="https://pypi.org/project/autoviz/" target="_blank">AutoViz - Automated Data Cleaning & Visualization</a></li>
+        <li><a href="https://pypi.org/project/sweetviz/" target="_blank">Sweetviz - EDA & Cleaning Insights</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 8: Practice & Real-World Applications</h2>
+    <ul>
+        <li><a href="https://www.kaggle.com/datasets" target="_blank">Kaggle Datasets - Cleaning Practice</a></li>
+        <li><a href="https://www.analyticsvidhya.com/practice/" target="_blank">Analytics Vidhya Practice Problems</a></li>
+        <li><a href="https://www.datacamp.com/projects" target="_blank">DataCamp Data Cleaning Projects</a></li>
+        <li><a href="https://www.coursera.org/projects" target="_blank">Coursera Guided Data Wrangling Projects</a></li>
+        <li><a href="https://github.com/justmarkham/pandas-videos" target="_blank">Pandas Video Exercises</a></li>
+    </ul>
+</section>
+
+<div class="page-end-line"></div>
+<div class="page-end-line"></div>
+
+</main>
+
+</body>
+</html>

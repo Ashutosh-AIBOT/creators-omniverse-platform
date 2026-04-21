@@ -1,0 +1,183 @@
+/* =====================================
+   RESET & BASE
+===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  color: #2f2f2f;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* =====================================
+   PAGE STRUCTURE
+===================================== */
+
+.private-page {
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.private-layout {
+  width: 100%;
+  max-width: 1280px;
+  padding: 72px 64px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+}
+
+/* =====================================
+   LEFT CONTENT
+===================================== */
+
+.private-content h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555555;
+  margin-bottom: 22px;
+}
+
+.description {
+  font-size: 16px;
+  color: #4a4a4a;
+  margin-bottom: 14px;
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.action-buttons {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+/* Primary */
+.btn-primary {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #111827;
+}
+
+/* Secondary */
+.btn-secondary {
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+}
+
+/* Outline */
+.btn-outline {
+  background: transparent;
+  color: #374151;
+  border: 1px dashed #cbd5e1;
+}
+
+.btn-outline:hover {
+  background: #f3f4f6;
+}
+
+/* =====================================
+   RIGHT ASIDE
+===================================== */
+
+.private-aside {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 36px;
+  height: fit-content;
+}
+
+.private-aside h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #1f2937;
+}
+
+.private-aside ul {
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+.private-aside li {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 12px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.private-aside li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.aside-note {
+  font-size: 14px;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 14px;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1024px) {
+  .private-layout {
+    grid-template-columns: 1fr;
+    padding: 56px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .private-content h1 {
+    font-size: 32px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

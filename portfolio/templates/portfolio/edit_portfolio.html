@@ -1,0 +1,15 @@
+<h2>Edit Portfolio</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Portfolio</button>
+</form>
+
+<hr>
+
+<a href="{% url 'add_project' %}">➕ Add Project</a><br><br>
+
+<a href="{% url 'view_portfolio' request.user.username %}" target="_blank">
+    🔍 Preview Portfolio
+</a>

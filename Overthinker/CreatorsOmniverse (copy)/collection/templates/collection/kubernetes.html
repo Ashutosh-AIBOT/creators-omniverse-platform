@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kubernetes Learning & Resources</title>
+    <link rel="stylesheet" href="{% static 'collection/one.css' %}">
+</head>
+<body>
+
+<main class="container">
+
+    <h1>Kubernetes Learning & Resources</h1>
+    <p class="subtitle">Container Orchestration • Cloud-Native • DevOps • Production Systems</p>
+
+<section>
+    <h2>Level 1: Kubernetes Fundamentals</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/" target="_blank">What is Kubernetes</a></li>
+        <li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">Kubernetes Basics Tutorial</a></li>
+        <li><a href="https://www.redhat.com/en/topics/containers/what-is-kubernetes" target="_blank">Kubernetes Explained (Red Hat)</a></li>
+        <li><a href="https://www.youtube.com/watch?v=X48VuDVv0do" target="_blank">Kubernetes Introduction Video</a></li>
+        <li><a href="https://www.udemy.com/course/kubernetes-for-the-absolute-beginners-hands-on/" target="_blank">Beginner Kubernetes Course</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 2: Kubernetes Architecture & Components</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/architecture/" target="_blank">Kubernetes Architecture Overview</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/overview/components/" target="_blank">Master & Node Components</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/architecture/control-plane-node-communication/" target="_blank">Control Plane Communication</a></li>
+        <li><a href="https://www.cncf.io/" target="_blank">CNCF & Kubernetes Ecosystem</a></li>
+        <li><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/" target="_blank">kubectl CLI Overview</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 3: Pods, Labels & Annotations</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/" target="_blank">Pods Explained</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" target="_blank">Labels & Selectors</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/" target="_blank">Annotations in Kubernetes</a></li>
+        <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/" target="_blank">Configure Containers in Pods</a></li>
+        <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run" target="_blank">Run Pods using kubectl</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 4: ReplicaSets & Deployments</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/" target="_blank">ReplicaSets</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank">Deployments Overview</a></li>
+        <li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/" target="_blank">Rolling Updates</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rollback" target="_blank">Rollback Deployments</a></li>
+        <li><a href="https://www.youtube.com/watch?v=qmDzcu5uY1I" target="_blank">Deployment Hands-on Tutorial</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 5: Services & Networking</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/" target="_blank">Kubernetes Services</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/" target="_blank">Ingress & Ingress Controllers</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/" target="_blank">DNS & Service Discovery</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/" target="_blank">Network Policies</a></li>
+        <li><a href="https://www.nginx.com/products/nginx-ingress-controller/" target="_blank">NGINX Ingress Controller</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 6: Configuration & Secrets</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/configuration/configmap/" target="_blank">ConfigMaps</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Secrets Management</a></li>
+        <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/" target="_blank">Using ConfigMaps in Pods</a></li>
+        <li><a href="https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/" target="_blank">Inject Secrets Securely</a></li>
+        <li><a href="https://external-secrets.io/" target="_blank">External Secrets Operator</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 7: Storage & Volumes</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/" target="_blank">Kubernetes Volumes</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Persistent Volumes (PV)</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims" target="_blank">Persistent Volume Claims (PVC)</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank">Storage Classes</a></li>
+        <li><a href="https://rook.io/" target="_blank">Rook Storage for Kubernetes</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 8: Scaling, Monitoring & Logging</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/" target="_blank">Horizontal Pod Autoscaler</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/cluster-administration/cluster-autoscaling/" target="_blank">Cluster Autoscaling</a></li>
+        <li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank">Prometheus Monitoring</a></li>
+        <li><a href="https://grafana.com/" target="_blank">Grafana Dashboards</a></li>
+        <li><a href="https://www.elastic.co/what-is/elk-stack" target="_blank">ELK Stack for Logging</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 9: Security & RBAC</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/security/overview/" target="_blank">Kubernetes Security Overview</a></li>
+        <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/" target="_blank">RBAC Authorization</a></li>
+        <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/" target="_blank">Pod Security Context</a></li>
+        <li><a href="https://www.aquasec.com/cloud-native-academy/kubernetes-security/" target="_blank">Kubernetes Security Best Practices</a></li>
+        <li><a href="https://falco.org/" target="_blank">Falco Runtime Security</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 10: Cloud, Production & Careers</h2>
+    <ul>
+        <li><a href="https://aws.amazon.com/eks/" target="_blank">AWS EKS</a></li>
+        <li><a href="https://cloud.google.com/kubernetes-engine" target="_blank">Google GKE</a></li>
+        <li><a href="https://azure.microsoft.com/en-us/services/kubernetes-service/" target="_blank">Azure AKS</a></li>
+        <li><a href="https://kubernetes.io/docs/setup/production-environment/" target="_blank">Production Best Practices</a></li>
+        <li><a href="https://www.linkedin.com/jobs/kubernetes/" target="_blank">Kubernetes Job Roles</a></li>
+    </ul>
+</section>
+
+</main>
+
+</body>
+</html>

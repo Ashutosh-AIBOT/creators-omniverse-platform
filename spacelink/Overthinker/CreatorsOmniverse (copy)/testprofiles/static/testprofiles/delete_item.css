@@ -1,0 +1,81 @@
+/* ====== DELETE ITEM PAGE ====== */
+
+.delete-item-page {
+  max-width: 520px;
+  margin: 60px auto 80px;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  text-align: center;
+}
+
+.delete-item-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+.delete-warning {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #b91c1c; /* red alert */
+}
+
+.delete-form .form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 36px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn {
+  background-color: #b91c1c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #991b1b;
+}
+
+.cancel-btn {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  padding: 12px 30px;
+}
+
+.cancel-btn:hover {
+  background-color: #c7d2fe;
+  color: #3730a3;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+  .delete-item-page {
+    margin: 40px 15px 60px;
+    padding: 30px 20px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 10px 24px;
+  }
+}

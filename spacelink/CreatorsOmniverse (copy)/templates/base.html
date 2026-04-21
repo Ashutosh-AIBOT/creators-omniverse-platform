@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>CreatorsOmniverse</title>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar-container">
+    <nav class="navbar">
+
+        <!-- Left: Home -->
+        <div class="nav-left">
+            <a href="/" class="nav-link home-btn">Home</a>
+        </div>
+
+        <!-- Middle: Navigation Links -->
+
+        <div class="nav-middle">
+
+
+            <a href="{% if user.is_authenticated %}{% url 'testprofiles:profile' user.username %}{% else %}{% url 'testaccounts:login' %}{% endif %}" 
+               class="side-link" 
+               data-redirect="{% url 'testaccounts:login' %}"> Profile</a>
+
+            <a href="{% if user.is_authenticated %}{% url 'study:study-home' %}{% else %}{% url 'testaccounts:login' %}{% endif %}" 
+               class="nav-link auth-required" 
+               data-redirect="{% url 'testaccounts:login' %}"> Explore </a>
+
+
+            <a href="{% if user.is_authenticated %}{% url 'xomni:xomni' %}{% else %}{% url 'testaccounts:login' %}{% endif %}" 
+               class="nav-link auth-required" 
+               data-redirect="{% url 'testaccounts:login' %}" 
+               title="AI Study Companion">Xomni</a>
+
+            <a href="{% url 'collection:collection_home' %}" class="side-link"> 📚 Resources </a>
+
+            <a href="{% if user.is_authenticated %}{% url 'portfolio:view_portfolio' user.username %}{% else %}{% url 'testaccounts:login' %}{% endif %}" 
+               class="nav-link auth-required" 
+               data-redirect="{% url 'testaccounts:login' %}">Portfolio</a>
+
+            <a href="{% if user.is_authenticated %}# {% else %}{% url 'testaccounts:login' %}{% endif %}" 
+               class="nav-link auth-required" 
+               data-redirect="{% url 'testaccounts:login' %}">FastAPI Model</a>
+
+
+               
+        </div>
+
+        <!-- Right: Profile or Login -->
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <a href="javascript:void(0)"
+                   class="profile-circle"
+                   title="{{ user.username }}"
+                   onclick="openSidepage()">
+                    {{ user.username|first|upper }}
+                </a>
+            {% else %}
+                <a href="{% url 'testaccounts:login' %}" class="login-btn">Login</a>
+                <a href="{% url 'testaccounts:register' %}" class="register-btn">Register</a>
+            {% endif %}
+        </div>
+
+    </nav>
+</header>
+
+<hr />
+
+<!-- SIDEPAGE OVERLAY -->
+<div id="sidepage-overlay" onclick="closeSidepage()"></div>
+
+<!-- SIDEPAGE -->
+<aside id="profile-sidepage" aria-label="User Profile Sidebar">
+    <div class="sidepage-header">
+        <h3>👤 Profile</h3>
+        <button aria-label="Close sidebar" onclick="closeSidepage()">✕</button>
+    </div>
+
+    <div class="sidepage-content">
+
+        
+
+        {% if not user.is_authenticated %}
+            <a href="{% url 'testaccounts:login' %}" class="side-link">Login</a>
+            <a href="{% url 'testaccounts:register' %}" class="side-link">Register</a>
+        {% else %}
+            <div class="side-username">{{ user.username }}</div>
+
+            <a href="{% url 'collection:collection_home' %}" class="side-link">📚 Resources</a>
+
+            <a href="{% url 'study:study-home' %}" class="side-link"> Explore </a>
+
+            <a href="{% url 'study:study-home' %}" class="side-link"> Models </a>
+
+            <a href="{% url 'xomni:xomni' %}" class="side-link">🤖 Xomni</a>
+
+            <!-- DASHBOARD FIXED HERE -->
+            <a href="{% url 'testprofiles:profile' user.username %}" class="side-link">
+                📊 Dashboard
+            </a>
+
+            <a href="#" class="side-link">🎨 Portfolio</a>
+            <a href="#" class="side-link">⚡ FastAPI Model</a>
+            
+            <!-- ================= COLOR MODE SWITCHER ================= -->
+
+        {% endif %}
+    </div>
+</aside>
+
+{% block content %}
+{% endblock %}
+
+<!-- SIDEPAGE JS -->
+<script>
+    function openSidepage() {
+        document.getElementById("profile-sidepage").classList.add("open");
+        document.getElementById("sidepage-overlay").classList.add("show");
+    }
+
+    function closeSidepage() {
+        document.getElementById("profile-sidepage").classList.remove("open");
+        document.getElementById("sidepage-overlay").classList.remove("show");
+    }
+
+    // ================= AUTH CHECK FOR NAV LINKS =================
+    document.querySelectorAll('.auth-required').forEach(link => {
+        link.addEventListener('click', function(e) {
+            {% if not user.is_authenticated %}
+                e.preventDefault();
+                window.location.href = this.dataset.redirect;
+            {% endif %}
+        });
+    });
+
+    // ================= COLOR MODE SWITCH =================
+    const themeSelect = document.getElementById('theme-select');
+    if(themeSelect) {
+        themeSelect.addEventListener('change', function() {
+            if(this.value === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'testprofiles/edit_item.css' %}">
+
+<div class="edit-item-page">
+  <h2>Edit Link in <span class="section-highlight">{{ section_title }}</span></h2>
+  
+  <form method="post" class="edit-item-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <div class="form-actions">
+      <button type="submit" class="btn save-btn">Save</button>
+      <a href="{% url 'testprofiles:profile' request.user.username %}" class="btn cancel-btn">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

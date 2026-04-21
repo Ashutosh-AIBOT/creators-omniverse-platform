@@ -1,0 +1,162 @@
+/* =====================================
+   RESET & BASE
+===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #2f2f2f;
+  line-height: 1.7;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.8rem;
+}
+
+/* =====================================
+   HERO KNOWLEDGE SECTION
+===================================== */
+
+.hero-knowledge {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+}
+
+.hero-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  flex: 1;
+  max-width: 520px;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1a237e; /* PROFESSIONAL BRAND COLOR */
+  margin-bottom: 1rem;
+}
+
+.username {
+  color: #3949ab;
+}
+
+.hero-tagline {
+  font-size: 1.3rem;
+  color: #555555;
+  margin-bottom: 2.5rem;
+}
+
+.hero-quote-primary {
+  font-size: 1.4rem;
+  font-style: italic;
+  padding-left: 1.5rem;
+  border-left: 4px solid #3949ab;
+  color: #444444;
+}
+
+/* RIGHT SIDE */
+.hero-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+
+.knowledge-card {
+  padding: 2rem;
+  background: #f9f9fc;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.knowledge-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: #1a237e;
+}
+
+.knowledge-card p {
+  font-size: 1rem;
+  color: #555555;
+}
+
+/* =====================================
+   QUOTES SECTION
+===================================== */
+
+.quotes-section {
+  background: #f4f6fb;
+  padding: 5rem 0;
+}
+
+.quotes-section blockquote {
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #333333;
+  text-align: center;
+}
+
+.quotes-section span {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: #1a237e;
+  font-weight: 600;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 900px) {
+  .hero-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-quote-primary {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .hero-right {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+
+  .quotes-section blockquote {
+    font-size: 1.1rem;
+  }
+}

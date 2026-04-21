@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'universe/universe_home.css' %}">
+
+<section class="hero hero-knowledge">
+
+  <div class="container hero-wrapper">
+
+    <!-- LEFT CONTENT -->
+    <div class="hero-left">
+      <h1 class="hero-title">
+        Welcome, <span class="username">{{ user.username }}</span>
+      </h1>
+
+      <p class="hero-tagline">
+        A calm place to think, learn, and build intelligently.
+      </p>
+
+      <div class="hero-quote-primary">
+        “Overthinking isn’t weakness — it’s intelligence without direction.”
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT (KNOWLEDGE BLOCKS) -->
+    <div class="hero-right">
+
+      <div class="knowledge-card">
+        <h3>🧠 Thought</h3>
+        <p>
+          Your mind generates ideas constantly. Mastery comes from choosing
+          which ones deserve attention.
+        </p>
+      </div>
+
+      <div class="knowledge-card">
+        <h3>📚 Learning</h3>
+        <p>
+          Consistent learning compounds silently. What you understand today
+          shapes what you can create tomorrow.
+        </p>
+      </div>
+
+      <div class="knowledge-card">
+        <h3>⚙️ Execution</h3>
+        <p>
+          Clarity is not found by thinking more — it is built by doing
+          intentionally.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- QUOTES SECTION -->
+<section class="quotes-section">
+  <div class="container">
+
+    <blockquote>
+      “The ability to simplify means to eliminate the unnecessary.”
+      <span>— Hans Hofmann</span>
+    </blockquote>
+
+    <blockquote>
+      “Knowledge grows when shared, wisdom grows when applied.”
+      <span>— Anonymous</span>
+    </blockquote>
+
+    <blockquote>
+      “Your future is decided by what you focus on repeatedly.”
+      <span>— Inspired Thought</span>
+    </blockquote>
+
+  </div>
+</section>
+
+{% include "universe/explore.html" %}
+
+{% endblock %}

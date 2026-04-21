@@ -1,0 +1,43 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+.git
+.gitignore
+*.log
+node_modules
+
+
+# Python virtual environment
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django stuff
+db.sqlite3
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Docker files (optional)
+docker-compose.yml

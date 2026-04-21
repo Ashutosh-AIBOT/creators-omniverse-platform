@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'xomni/index.css' %}">
+
+<div class="xomni-wrapper" id="page-wrapper">
+    <nav id="navbar">
+        <div class="logo">XOMNI</div>
+        <div id="dynamic-links-container"></div>
+        <div id="color-trigger" class="hidden" onclick="toggleColorPicker()">🎨 Change Color</div>
+    </nav>
+
+    <div id="color-picker-bar" class="hidden">
+        <span class="picker-label">Choose a vibe:</span>
+        <div class="picker-btns">
+            <button class="color-btn" style="background:#00d2ff;" onclick="setTheme('#00d2ff', '#000', '#0a0a0a')">Sky</button>
+            <button class="color-btn" style="background:#ff3366;" onclick="setTheme('#ff3366', '#fff', '#1a0005')">Rose</button>
+            <button class="color-btn" style="background:#33ff99;" onclick="setTheme('#33ff99', '#000', '#001a0a')">Neon</button>
+            <button class="color-btn" style="background:#f4f4f4; border:1px solid #ccc;" onclick="setTheme('#555', '#fff', '#ffffff')">Reset</button>
+            <button class="done-btn" onclick="toggleColorPicker()">Done</button>
+        </div>
+    </div>
+
+    <div class="chat-viewport">
+        <div class="chat-container" id="chat-box">
+            </div>
+    </div>
+
+    <div class="input-area" id="input-area">
+        <div class="input-wrapper">
+            <input type="text" id="user-input" placeholder="Talk to Xomni...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div id="secret-page" class="hidden">
+        <!-- Secret page remains exactly as it was -->
+        <nav class="final-nav">
+            <div class="final-logo">CREATOR OMNIVERSE</div>
+            <div class="final-nav-links">
+                <span>3+ Years Journey</span>
+            </div>
+        </nav>
+        <div class="final-content">
+            <div class="heart-icon">❤️</div>
+            <h1 class="dark-text">Thank you for everything...</h1>
+            <p class="grey-text">I know if you are here, I have already gone for a long sleep. But you are my lovely one. 🥺</p>
+            <div class="story-box">
+                <h2>The 3+ Year Journey</h2>
+                <p>Welcome to this collection. Most importantly, this is a record of a <strong>3+ year journey</strong> learning <strong>Data Science, Generative AI</strong>, and everything from basic to advanced.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    let chatHistory = [];
+
+    const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+    async function addMessage(text, type = 'bot-msg') {
+        const msg = document.createElement('div');
+        msg.className = `message ${type}`;
+        msg.innerHTML = text.replace(/\n/g, '<br>');
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        
+        chatHistory.push({
+            role: type === 'bot-msg' ? 'assistant' : 'user',
+            content: text
+        });
+    }
+
+    window.onload = async () => {
+        await delay(1000);
+        addMessage("Hello... how are you? 👋");
+        await delay(1500);
+        addMessage("I am Xomni. I've been upgraded and now I can really talk to you! ✨");
+    };
+
+    async function handleSend() {
+        const query = userInput.value.trim();
+        if (!query) return;
+
+        addMessage(query, 'user-msg');
+        userInput.value = "";
+
+        try {
+            const response = await fetch("{% url 'xomni:chat_api' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    message: query,
+                    history: chatHistory
+                })
+            });
+
+            const data = await response.json();
+            if (data.response) {
+                addMessage(data.response, 'bot-msg');
+            } else {
+                addMessage("I'm sorry, I'm having trouble thinking. Error: " + (data.error || "Unknown"), 'bot-msg');
+            }
+        } catch (error) {
+            addMessage("Connection error. Is the server running? 😭", 'bot-msg');
+        }
+    }
+
+    sendBtn.onclick = handleSend;
+    userInput.addEventListener("keypress", (e) => { if(e.key === "Enter") handleSend(); });
+
+    function toggleColorPicker() {
+        document.getElementById('color-picker-bar').classList.toggle('hidden');
+        document.getElementById('navbar').classList.toggle('hidden');
+    }
+
+    function setTheme(accent, userText, bg) {
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--user-text', userText);
+        document.documentElement.style.setProperty('--main-bg', bg);
+        
+        if(bg === '#ffffff') {
+            document.documentElement.style.setProperty('--bot-bg', '#f4f4f4');
+            document.documentElement.style.setProperty('--text-main', '#333');
+        } else {
+            document.documentElement.style.setProperty('--bot-bg', '#1a1a1a');
+            document.documentElement.style.setProperty('--text-main', '#fff');
+        }
+        document.getElementById('color-trigger').classList.remove('hidden');
+    }
+</script>
+{% endblock %}

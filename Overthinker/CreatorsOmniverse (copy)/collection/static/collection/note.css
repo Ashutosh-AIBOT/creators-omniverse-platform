@@ -1,0 +1,130 @@
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;          /* white background */
+    color: #2f2f2f;               /* dark grey text */
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+.focus-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+/* ===============================
+   VISION SECTION
+================================ */
+.motivation-area {
+    margin-bottom: 3rem;
+}
+
+/* Vision label */
+.overhead {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    margin-bottom: 1.3rem;
+}
+
+/* Main heading */
+.main-statement {
+    font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #262626;
+    margin-bottom: 1.6rem;
+}
+
+/* Subtle underline */
+.main-statement::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 2px;
+    background: #3a3a3a;
+    margin: 1.4rem auto 0;
+    border-radius: 1px;
+}
+
+/* Quotes (supports multiple quote-text blocks) */
+.quote-text {
+    max-width: 720px;
+    margin: 1.6rem auto 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #5a5a5a;
+    font-style: italic;
+}
+
+/* Slight separation between multiple quotes */
+.quote-text + .quote-text {
+    margin-top: 1.2rem;
+}
+
+/* ===============================
+   NOTE SECTION
+================================ */
+.future-note {
+    margin-top: 3.2rem;
+}
+
+.line-separator {
+    width: 100px;
+    height: 1px;
+    background: #d6d6d6;
+    margin: 0 auto 1.6rem;
+}
+
+.process-text {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: #555555;
+}
+
+.happy-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3f3f3f;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+    .main-statement {
+        font-size: 1.9rem;
+    }
+
+    .quote-text {
+        font-size: 0.92rem;
+    }
+
+    .process-text {
+        font-size: 0.86rem;
+    }
+}

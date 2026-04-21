@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'universe/universe_phome.css' %}">
+<link rel="stylesheet" href="{% static 'universe/explore.css' %}">
+
+<section class="hero hero-thought">
+
+  <div class="container hero-wrapper">
+
+    <!-- LEFT: CORE MESSAGE -->
+    <div class="hero-left">
+
+      <h1 class="hero-title">
+        Overthinking
+      </h1>
+
+      <h3 class="hero-subheading">
+        Isn’t the problem.
+        <span>The direction is.</span>
+      </h3>
+
+      <p class="hero-quote-small">
+        Your mind is powerful — this space helps you use it wisely.
+      </p>
+
+      <div class="action-row">
+        <a href="{% url 'testaccounts:login' %}" class="btn primary">Login</a>
+        <a href="{% url 'testaccounts:register' %}" class="btn outline">Create Account</a>
+        <a href="#" class="btn roadmap">📚 Start Learning</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: THOUGHT BLOCKS -->
+    <div class="hero-right">
+
+      <div class="thought-card">
+        <p>
+          “The mind is a wonderful servant, but a terrible master.”
+        </p>
+        <span>— David Foster Wallace</span>
+      </div>
+
+      <div class="thought-card">
+        <p>
+          “Clarity comes from action, not endless thinking.”
+        </p>
+        <span>— Marie Forleo</span>
+      </div>
+
+      <div class="thought-card highlight">
+        <p>
+          Overthinking becomes strength when guided by purpose.
+        </p>
+        <span>— Creator </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- REFLECTION STRIP -->
+<section class="reflection-strip">
+  <div class="container">
+    <p>
+      This platform is built for thinkers, learners, and creators —
+      not for noise, but for clarity.
+    </p>
+  </div>
+</section>
+
+{% include "universe/explore.html" %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ portfolio.name }}</title>
+</head>
+<body style="background:#f4f4f4;font-family:Arial;">
+<div style="max-width:800px;margin:40px auto;background:#fff;padding:30px;">
+    <h1>{{ portfolio.name }}</h1>
+    <h3>{{ portfolio.headline }}</h3>
+    <p>{{ portfolio.bio }}</p>
+
+    <hr>
+    <p>{{ portfolio.about }}</p>
+
+    <h2>Projects</h2>
+    {% for project in portfolio.projects.all %}
+        <div>
+            <h4>{{ project.name }}</h4>
+            {% if project.image %}
+                <img src="{{ project.image.url }}" width="200">
+            {% endif %}
+            <p><a href="{{ project.link }}" target="_blank">View Project</a></p>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

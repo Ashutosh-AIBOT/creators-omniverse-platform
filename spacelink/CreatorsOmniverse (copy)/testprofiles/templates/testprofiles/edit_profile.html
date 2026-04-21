@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'testprofiles/edit_profile.css' %}">
+
+<div class="dashboard-page edit-profile-page">
+
+  <!-- HEADER -->
+  <header class="dashboard-header">
+    <h1 class="dashboard-title">{{ profile.user.username }}’s Dashboard</h1>
+    <p class="dashboard-subtitle">Edit your profile details below</p>
+  </header>
+
+  <section class="edit-profile-container">
+    <h2>Edit Your Profile</h2>
+    <form method="post" class="edit-profile-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="btn save-btn">Save</button>
+        <a href="{% url 'testprofiles:profile' profile.user.username %}" class="btn cancel-btn">Cancel</a>
+      </div>
+    </form>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .community-explore {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+    }
+    .join-box {
+        background: #f9fafb;
+        border: 2px dashed #4f46e5;
+        padding: 30px;
+        border-radius: 20px;
+        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .join-box input {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 200px;
+    }
+    .btn-join {
+        background: #4f46e5;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 800;
+        cursor: pointer;
+    }
+    .topic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    .topic-card {
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        transition: 0.3s;
+        text-decoration: none;
+        color: #333;
+    }
+    .topic-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-color: #4f46e5;
+    }
+</style>
+
+<div class="community-explore">
+    <h1 style="font-size: 3rem; font-weight: 800; text-align: center;">Explore Communities</h1>
+    
+    <!-- JOIN VIA ID FORM -->
+    <div class="join-box">
+        <div style="flex: 1 1 100%;">
+            <h3 style="margin: 0 0 10px 0;">Join via Group ID</h3>
+            <p style="margin: 0; font-size: 0.9rem; color: #666;">Enter a unique ID (and password if private) to join a specific group.</p>
+        </div>
+        <form action="{% url 'communities:join_group' %}" method="post" style="display: flex; gap: 15px; flex: 1;">
+            {% csrf_token %}
+            <input type="text" name="unique_id" placeholder="Group ID (e.g. A1B2C3D4)" required>
+            <input type="password" name="password" placeholder="Password (Optional)">
+            <button type="submit" class="btn-join">Join Group</button>
+        </form>
+    </div>
+
+    <div class="topic-grid">
+        {% for topic in topics %}
+            <a href="{% url 'communities:topic_detail' topic.id %}" class="topic-card">
+                <h2 style="font-size: 2rem; margin-bottom: 15px;">{{ topic.name }}</h2>
+                <p style="color: #666;">{{ topic.description|truncatechars:100 }}</p>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

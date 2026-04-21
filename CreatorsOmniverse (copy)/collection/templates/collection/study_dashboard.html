@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'collection/study_dashboard.css' %}">
+
+<section class="study-wrapper">
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="study-topbar">
+    <nav class="study-tabs">
+      {% for key, sec in sections.items %}
+        <a href="{% url 'collection:collection_language' key %}"
+           class="tab-btn {% if key == selected_key %}active{% endif %}">
+          {{ sec.title }}
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="study-header">
+    <h1 class="study-title">
+      {{ selected_section.title }} Resources
+    </h1>
+    <hr class="header-separator">
+    <p class="study-subtitle">
+      "Knowledge is the passport to your dreams — keep learning, keep growing!" 🚀
+    </p>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+
+  <section class="study-content">
+    {% if selected_section.topics %}
+      <div class="topic-grid">
+        {% for name, slug in selected_section.topics %}
+          <a href="{% url 'collection:collection_topic' selected_key slug %}"
+             class="topic-chip {% if slug == selected_topic %}active{% endif %}">
+            {{ name }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- ================= PAGE END LINE ================= -->
+    <div class="page-end-line"></div>
+
+    <!-- ================= SELECTED SUBTOPIC DETAIL ================= -->
+
+    {% if selected_topic %}
+      <div class="topic-detail" style="margin-top: 2rem;">
+        <hr class="topic-separator">
+        {% include topic_template %}
+      </div>
+    {% endif %}
+
+
+  </section>
+
+
+  {% include "collection/last.html" %}
+
+</section>
+{% endblock %}

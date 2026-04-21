@@ -1,0 +1,109 @@
+/* ================= PAGE WRAPPER ================= */
+.container {
+  max-width: 900px;
+  margin: 40px auto 70px;
+  padding: 0 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* ================= PAGE HEADER ================= */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 45px;
+}
+
+/* ================= SECTIONS ================= */
+section {
+  margin-bottom: 55px;
+}
+
+/* Section title */
+section h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* Small underline */
+section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #333333;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ================= BUTTON LIST ================= */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Button style links */
+ul li a {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #f5f5f5;
+  color: #333333;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+ul li a:hover {
+  background-color: #eaeaea;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ================= PAGE END LINE ================= */
+.page-end-line {
+  margin: 50px auto 30px;
+  width: 80%;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff7a18, #af002d, #319197);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+
+  ul li a {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .page-end-line {
+    width: 90%;
+    height: 3px;
+  }
+}

@@ -1,0 +1,99 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* Closing Note Section */
+.closing-note {
+  background: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 3px solid #444444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 700px;
+  margin: 50px auto 70px auto;
+  border-radius: 12px;
+}
+
+/* Wrapper */
+.closing-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Motivational Quote */
+.closing-quote {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: #222222;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Decorative line */
+.closing-line {
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #555555;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+/* Supportive Message */
+.closing-message {
+  font-size: 1rem;
+  color: #444444;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Hyped Motivational text */
+.closing-hyped {
+  font-size: 1.1rem;
+  color: #1a73e8;  /* nice bright blue */
+  font-weight: 700;
+  margin-top: 30px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Slight pulsing animation to hype */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .closing-quote {
+    font-size: 1.1rem;
+  }
+
+  .closing-message {
+    font-size: 0.9rem;
+  }
+
+  .closing-hyped {
+    font-size: 1rem;
+  }
+}

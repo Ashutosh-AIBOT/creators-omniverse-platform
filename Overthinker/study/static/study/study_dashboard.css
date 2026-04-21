@@ -1,0 +1,180 @@
+/* ================= GLOBAL ================= */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= WRAPPER ================= */
+.study-wrapper {
+  width: 95%;
+  max-width: 1200px;
+  margin: 7px auto;
+  padding: 20px 0;
+}
+
+/* ================= TOP BAR / TABS ================= */
+.study-topbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  margin-top: 10px;
+}
+
+.study-tabs {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: #eaeaea;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.tab-btn.active {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #333333;
+}
+
+/* ================= HEADER ================= */
+.study-header {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+
+.study-title {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.header-separator {
+  width: 60px;
+  height: 3px;
+  background-color: #333333;
+  margin: 10px auto 15px auto;
+  border: none;
+  border-radius: 2px;
+}
+
+.study-subtitle {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+.study-quote {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #777777;
+  margin-top: 20px;
+}
+
+/* ================= CONTENT ================= */
+.study-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 30px; /* Space between sections and topic details */
+}
+
+.topic-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.topic-chip {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  color: #333333;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.topic-chip:hover {
+  background-color: #eaeaea;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+.topic-chip.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.topic-chip.active {
+  background-color: #333333;
+  color: #fff;
+  border-color: #333333;
+}
+
+/* ================= COMING SOON ================= */
+.coming-soon {
+  font-size: 1rem;
+  color: #999999;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* ================= PAGE END SEPARATOR ================= */
+.page-end-line {
+  width: 70%;
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #333333,
+    transparent
+  );
+  margin: 60px auto 15px auto; /* 60px before, 15px after */
+  border-radius: 4px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .study-tabs {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
+
+  .study-title {
+    font-size: 1.5rem;
+  }
+
+  .topic-chip {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}

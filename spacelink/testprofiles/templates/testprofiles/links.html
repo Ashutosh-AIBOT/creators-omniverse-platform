@@ -1,0 +1,110 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'testprofiles/links.css' %}">
+
+<section class="links-dashboard">
+
+  <!-- Short Quote Before Main Heading -->
+  <div class="top-quote">
+    <p>“Organize your digital world — clarity leads to productivity.”</p>
+  </div>
+
+  <!-- Professional Heading and Quote -->
+  <header class="links-header">
+    <h1>All Your Links in One Place</h1>
+    <blockquote class="links-quote">
+      “Success is not just about what you accomplish in your life, it’s about what you inspire others to do.” – Unknown
+    </blockquote>
+    <p class="links-intro">
+      Welcome to your curated collection of all important links. Organized and ready for easy access — your digital hub to everything that matters.
+    </p>
+  </header>
+
+  <!-- Links Collections -->
+  {% for key, section_title in sections.items %}
+  <div class="links-card">
+
+    <!-- HEADER -->
+    <div class="links-card-header">
+      <h3>{{ section_title }}</h3>
+      <!-- Related small quote per section -->
+      <p class="section-quote">
+        {% if key == "social" %}
+          "Connect with the world that matters."
+        {% elif key == "coding" %}
+          "Code is the language of the future."
+        {% elif key == "job" %}
+          "Build your career step by step."
+        {% elif key == "project" %}
+          "Projects are the proof of progress."
+        {% elif key == "study" %}
+          "Learning today, leading tomorrow."
+        {% elif key == "extra" %}
+          "Extra resources for extra growth."
+        {% else %}
+          "Links to keep you moving forward."
+        {% endif %}
+      </p>
+
+      {% if is_owner %}
+        <a href="{% url 'testprofiles:add_item' key %}" class="add-link">
+          + Add
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- BODY -->
+    <div class="links-card-body">
+
+      {% for section_key, items in items_list %}
+        {% if section_key == key %}
+
+          {% if items %}
+          <div class="links-grid">
+
+            {% for item in items %}
+            <div class="link-item">
+
+              <h4 class="link-title">{{ item.title }}</h4>
+
+              {% if item.description %}
+                <p class="link-desc">{{ item.description }}</p>
+              {% endif %}
+
+              <a href="{{ item.url }}" target="_blank" class="visit-btn">
+                {{ item.button_text }}
+              </a>
+
+              {% if is_owner %}
+              <div class="link-controls">
+                <a href="{% url 'testprofiles:edit_item' item.pk %}">Edit</a>
+                <a href="{% url 'testprofiles:delete_item' item.pk %}">Delete</a>
+                <a href="{% url 'testprofiles:toggle_item_visibility' item.pk %}">
+                  {% if item.is_public %}Make Private{% else %}Make Public{% endif %}
+                </a>
+              </div>
+              {% endif %}
+
+            </div>
+            {% endfor %}
+
+          </div>
+          {% else %}
+            <p class="empty-text">No links added.</p>
+          {% endif %}
+
+        {% endif %}
+      {% endfor %}
+
+    </div>
+
+  </div>
+  {% endfor %}
+
+  <!-- Motivational Message -->
+  <footer class="links-footer">
+    <p>
+      Life isn’t just about tech or the hustle — it’s about enjoying the journey and helping others along the way. Don’t overthink; manage, solve step-by-step, and remember to find joy in every moment.
+    </p>
+  </footer>
+
+</section>

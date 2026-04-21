@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'testprofiles/private_profile.css' %}">
+
+<section class="private-page">
+
+  <div class="private-layout">
+
+    <!-- LEFT CONTENT -->
+    <div class="private-content">
+
+      {% if reason == "not_found" %}
+        <h1>Oops… Profile Missing 👀</h1>
+        <p class="subtitle">
+          This profile doesn’t exist or may have been removed.
+        </p>
+      {% else %}
+        <h1>Oops! You Can’t Access This 🚫</h1>
+        <p class="subtitle">
+          This creator decided to keep their dashboard private.
+        </p>
+      {% endif %}
+
+      <p class="description">
+        Don’t overthink it 😄  
+        On <strong>Overthinking</strong>, only public dashboards are visible.
+        Private profiles stay protected for privacy and security.
+      </p>
+
+      <p class="description">
+        You can still explore public creators or create your own dashboard
+        and share your work your way.
+      </p>
+
+      <div class="action-buttons">
+        <a href="{% url 'universe:phome' %}" class="btn btn-primary">
+          Go Back Home
+        </a>
+
+        {% if not user.is_authenticated %}
+          <a href="{% url 'testaccounts:login' %}" class="btn btn-secondary">
+            Login
+          </a>
+          <a href="{% url 'testaccounts:register' %}" class="btn btn-outline">
+            Create Account
+          </a>
+        {% else %}
+          <a href="{% url 'testprofiles:profile' user.username %}" class="btn btn-secondary">
+            Go to My Dashboard
+          </a>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <!-- RIGHT INFO PANEL -->
+    <aside class="private-aside">
+
+      <h3>Why create a public dashboard?</h3>
+
+      <ul>
+        <li>Showcase your projects and skills</li>
+        <li>Keep all important links in one place</li>
+        <li>Build a clean professional presence</li>
+        <li>Get discovered by people and opportunities</li>
+      </ul>
+
+      <p class="aside-note">
+        💡 Tip: Public dashboards increase visibility —  
+        you control what’s shown, always.
+      </p>
+
+    </aside>
+
+  </div>
+
+</section>
+
+{% include "universe/explore.html" %}
+{% endblock %}

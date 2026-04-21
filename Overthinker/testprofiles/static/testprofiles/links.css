@@ -1,0 +1,192 @@
+/* ===== LINKS DASHBOARD ===== */
+.links-dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ===== TOP QUOTE (above main heading) ===== */
+.top-quote {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* ===== PROFESSIONAL HEADING & QUOTE ===== */
+.links-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.links-header h1 {
+  font-size: 32px;
+  color: #2f2f2f;
+  margin-bottom: 8px;
+}
+
+.links-quote {
+  font-style: italic;
+  color: #777;
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+.links-intro {
+  font-size: 15px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== CARD ===== */
+.links-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+/* ===== CARD HEADER ===== */
+.links-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Section Title */
+.links-card-header h3 {
+  font-size: 20px;
+  color: #2f2f2f;
+  margin: 0;
+}
+
+/* Section Small Quote */
+.section-quote {
+  font-size: 13px;
+  font-style: italic;
+  color: #666;
+  margin: 4px 0 0 0;
+  flex-grow: 1;
+  max-width: 70%;
+}
+
+/* ===== ADD BUTTON ===== */
+.add-link {
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #2f2f2f;
+  color: #2f2f2f;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.add-link:hover {
+  background: #f5f5f5;
+}
+
+/* ===== GRID ===== */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ===== ITEM ===== */
+.link-item {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-title {
+  font-size: 16px;
+  color: #2f2f2f;
+  margin: 0;
+}
+
+.link-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ===== VISIT BUTTON ===== */
+.visit-btn {
+  margin-top: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  background: #2f2f2f;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.visit-btn:hover {
+  background: #1f1f1f;
+}
+
+/* ===== OWNER CONTROLS ===== */
+.link-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.link-controls a {
+  color: #666;
+  text-decoration: none;
+}
+
+.link-controls a:hover {
+  text-decoration: underline;
+}
+
+/* ===== EMPTY ===== */
+.empty-text {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ===== FOOTER MOTIVATIONAL MESSAGE ===== */
+.links-footer {
+  text-align: center;
+  font-size: 15px;
+  font-style: italic;
+  color: #555;
+  margin-top: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .links-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-quote {
+    max-width: 100%;
+    margin-top: 6px;
+  }
+}

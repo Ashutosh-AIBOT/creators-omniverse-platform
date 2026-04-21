@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'study/study_dashboard.css' %}">
+
+<section class="study-wrapper">
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="study-topbar">
+    <nav class="study-tabs">
+      {% for key, sec in sections.items %}
+        <a href="{% url 'study:study-language' key %}"
+           class="tab-btn {% if key == selected_key %}active{% endif %}">
+          {{ sec.title }}
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="study-header">
+    <h1 class="study-title">
+      {{ selected_section.title }} Learning Path
+    </h1>
+    <hr class="header-separator">
+    <p class="study-subtitle">
+      "Knowledge is the passport to your dreams — keep learning, keep growing!" 🚀
+    </p>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <section class="study-content">
+
+    <!-- ================= SUBTOPIC GRID (always visible) ================= -->
+    {% if selected_section.topics %}
+      <div class="topic-grid">
+        {% for name, slug in selected_section.topics %}
+          {% if slug %}
+            <a href="/study/{{ selected_key }}/{{ slug }}/"
+               class="topic-chip {% if slug == selected_topic %}active{% endif %}">
+              {{ name }}
+            </a>
+          {% else %}
+            <span class="topic-chip disabled">{{ name }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="coming-soon">
+        🚧 Content will be added here soon
+      </div>
+    {% endif %}
+
+    <div class="page-end-line"></div>
+
+    <!-- ================= SELECTED SUBTOPIC DETAIL ================= -->
+    {% if selected_topic %}
+      <div class="topic-detail" style="margin-top: 2rem;">
+        <hr class="topic-separator">
+        {% include topic_template %}
+      </div>
+    {% endif %}
+
+  </section>
+
+</section>
+
+{% include "study/last.html" %}
+
+{% endblock %}

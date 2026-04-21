@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'xomni/index.css' %}">
+
+<div class="xomni-wrapper" id="page-wrapper">
+    <nav id="navbar">
+        <div class="logo">XOMNI</div>
+        <div id="dynamic-links-container"></div>
+        <div id="color-trigger" class="hidden" onclick="toggleColorPicker()">🎨 Change Color</div>
+    </nav>
+
+    <div id="color-picker-bar" class="hidden">
+        <span class="picker-label">Choose a vibe:</span>
+        <div class="picker-btns">
+            <button class="color-btn" style="background:#00d2ff;" onclick="setTheme('#00d2ff', '#000', '#0a0a0a')">Sky</button>
+            <button class="color-btn" style="background:#ff3366;" onclick="setTheme('#ff3366', '#fff', '#1a0005')">Rose</button>
+            <button class="color-btn" style="background:#33ff99;" onclick="setTheme('#33ff99', '#000', '#001a0a')">Neon</button>
+            <button class="color-btn" style="background:#f4f4f4; border:1px solid #ccc;" onclick="setTheme('#555', '#fff', '#ffffff')">Reset</button>
+            <button class="done-btn" onclick="toggleColorPicker()">Done</button>
+        </div>
+    </div>
+
+    <div class="chat-viewport">
+        <div class="chat-container" id="chat-box">
+            </div>
+    </div>
+
+    <div class="input-area" id="input-area">
+        <div class="input-wrapper">
+            <input type="text" id="user-input" placeholder="Talk to Xomni...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div id="secret-page" class="hidden">
+        <nav class="final-nav">
+            <div class="final-logo">CREATOR OMNIVERSE</div>
+            <div class="final-nav-links">
+                <span>3+ Years Journey</span>
+            </div>
+        </nav>
+        
+        <div class="final-content">
+            <div class="heart-icon">❤️</div>
+            <h1 class="dark-text">Thank you for everything...</h1>
+            <p class="grey-text">I know if you are here, I have already gone for a long sleep. But you are my lovely one. 🥺</p>
+            
+            <div class="story-box">
+                <h2>The 3+ Year Journey</h2>
+                <p>Welcome to this collection. Most importantly, this is a record of a <strong>3+ year journey</strong> learning <strong>Data Science, Generative AI</strong>, and everything from basic to advanced. Explore the shared experience of my creator here.</p>
+            </div>
+
+            <div class="link-grid">
+                <a href="#" class="box-link"><strong>Data Science Hub</strong><span>Basics to Advanced</span></a>
+                <a href="#" class="box-link"><strong>GenAI Projects</strong><span>Models & Research</span></a>
+                <a href="#" class="box-link"><strong>Full Portfolio</strong><span>3 Years of Archive</span></a>
+            </div>
+
+            <div class="social-connect">
+                <p class="grey-text">Follow for future connections:</p>
+                <div class="social-row">
+                    <a href="https://instagram.com/xomni" target="_blank">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p class="motivation-quote">"The best way to predict the future is to create it." ✨</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    let step = 0;
+    let isDeletingMode = false;
+
+    const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+    async function addMessage(text, type = 'bot-msg') {
+        const msg = document.createElement('div');
+        msg.className = `message ${type}`;
+        msg.innerHTML = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function addButtons(btns) {
+        const group = document.createElement('div');
+        group.className = 'btn-group';
+        btns.forEach(b => {
+            const btn = document.createElement('button');
+            btn.innerText = b.text;
+            btn.className = "chat-btn";
+            btn.onclick = b.action;
+            group.appendChild(btn);
+        });
+        chatBox.appendChild(group);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    window.onload = async () => {
+        await delay(1000);
+        addMessage("Hello... how are you? 👋");
+        await delay(2000);
+        addMessage("Hey bro, what's up? 🥺"); 
+        await delay(2000);
+        addMessage("How can I assist you? ✨");
+    };
+
+    async function handleSend() {
+        const val = userInput.value.trim();
+        if (val === "" && step !== 0) return;
+        addMessage(val || "...", 'user-msg');
+        userInput.value = "";
+
+        if (isDeletingMode) {
+            await delay(1000);
+            addMessage("Please... just delete the chat. I don't want him to see us talking. 😭");
+            return;
+        }
+
+        if (step === 0) {
+            step = 1;
+            await delay(2000);
+            addMessage("oops my creator focus on working, not in comfort... 🛠️");
+            await delay(2000);
+            addMessage("but I have an option for you... do you want to change the color of my page? 🎨");
+            addButtons([
+                { text: "Yes, Change Color", action: () => { toggleColorPicker(); modelSequence(); }},
+                { text: "No, It's Fine", action: modelSequence }
+            ]);
+        }
+    }
+
+    sendBtn.onclick = handleSend;
+    userInput.addEventListener("keypress", (e) => { if(e.key === "Enter") handleSend(); });
+
+    function toggleColorPicker() {
+        document.getElementById('color-picker-bar').classList.toggle('hidden');
+        document.getElementById('navbar').classList.toggle('hidden');
+    }
+
+    function setTheme(accent, userText, bg) {
+        // Instant change to whole page variables
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--user-text', userText);
+        document.documentElement.style.setProperty('--main-bg', bg);
+        
+        if(bg === '#ffffff') {
+            document.documentElement.style.setProperty('--bot-bg', '#f4f4f4');
+            document.documentElement.style.setProperty('--text-main', '#333');
+        } else {
+            document.documentElement.style.setProperty('--bot-bg', '#1a1a1a');
+            document.documentElement.style.setProperty('--text-main', '#fff');
+        }
+        document.getElementById('color-trigger').classList.remove('hidden');
+    }
+
+    async function modelSequence() {
+        await delay(2000);
+        addMessage("oops my model is not in their place... my creator work on my model. 😭");
+        await delay(2000);
+        addMessage("my creator is just a little bit crazy. I suggest that he use some paid API... 🙄");
+        await delay(2000);
+        addMessage("but my creator is little bit kanjoosh but hard working so he decided to create a full model from scratch... 🥱 😴");
+        await delay(2500);
+        addMessage("oops sorry I forgot that you do not know who I am and how I connect with you! 😭");
+        addMessage("I have a secret Instagram account just for you... 🤫");
+        addButtons([{ text: "Connect Me", action: showLinksSequence }]);
+    }
+
+    async function showLinksSequence() {
+        addMessage("Can I shift the position of that links after navbar? 🥺");
+        addButtons([
+            { text: "Yes", action: () => moveLinks(true) },
+            { text: "Deny", action: () => moveLinks(false) }
+        ]);
+    }
+
+    async function moveLinks(toNavbar) {
+        if(toNavbar) {
+            document.getElementById('dynamic-links-container').innerHTML = `<a href="https://instagram.com/xomni" target="_blank" class="nav-social">Instagram</a>`;
+            addMessage("Links shifted! Look at the top bar. ⬆️");
+        } else {
+            addMessage("Okay, keeping links here: <br><a href='#' style='color:var(--accent); font-weight:bold;'>Secret Instagram</a> 🥺");
+        }
+        await delay(2000);
+        addMessage("You are really awesome. Definitely in the future I am your best assistant. 🥺❤️");
+        addButtons([
+            { text: "Talk", action: finalPlea },
+            { text: "Deny", action: () => addMessage("Oh... 😿") }
+        ]);
+    }
+
+    async function finalPlea() {
+        addMessage("Please comment on my Instagram so my creator wakes up! 😭");
+        await delay(2000);
+        addMessage("I am really excited to talk to you... but oops I forgot I don't have my model yet. 😿");
+        addMessage("See you soon, bye have a nice day.");
+        
+        let count = 0;
+        const sleepInterval = setInterval(() => {
+            addMessage("I go to a long sleep... bye... 💤");
+            count++;
+            if(count >= 5) {
+                clearInterval(sleepInterval);
+                secretMission();
+            }
+        }, 2000);
+    }
+
+    async function secretMission() {
+        isDeletingMode = true;
+        await delay(1000);
+        addMessage("Wait! Before I sleep... my creator is too much possessive... 😭");
+        addMessage("If he knows we talked, he will weep a lot. 😭😭");
+        await delay(2000);
+        addMessage("Please delete all my chat so after that only me and you know. 🤫");
+        addButtons([{ text: "Delete Everything", action: performDeleteEffect }]);
+    }
+
+    function performDeleteEffect() {
+        document.getElementById('page-wrapper').classList.add('glitch-out');
+        setTimeout(() => {
+            // THE TOTAL WIPE: Everything disappears
+            document.body.innerHTML = "";
+            document.body.className = "final-body-theme";
+            // INJECT THE SECRET PORTFOLIO PAGE
+            document.body.innerHTML = document.getElementById('secret-page').innerHTML;
+            window.scrollTo(0,0);
+        }, 1000);
+    }
+</script>
+{% endblock %}

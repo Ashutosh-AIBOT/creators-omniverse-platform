@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CI/CD Pipelines Learning & Resources</title>
+    <link rel="stylesheet" href="{% static 'collection/one.css' %}">
+</head>
+<body>
+
+<main class="container">
+
+    <h1>CI/CD Pipelines Learning & Resources</h1>
+    <p class="subtitle">Continuous Integration • Continuous Delivery • DevOps • Automation</p>
+
+<section>
+    <h2>Level 1: CI/CD Fundamentals</h2>
+    <ul>
+        <li><a href="https://www.redhat.com/en/topics/devops/what-is-ci-cd" target="_blank">What is CI/CD</a></li>
+        <li><a href="https://www.atlassian.com/continuous-delivery/ci-vs-ci-vs-cd" target="_blank">CI vs CD vs CD Explained</a></li>
+        <li><a href="https://www.youtube.com/watch?v=42UP1fxi2SY" target="_blank">CI/CD Explained Video</a></li>
+        <li><a href="https://martinfowler.com/articles/continuousIntegration.html" target="_blank">Continuous Integration Concepts</a></li>
+        <li><a href="https://www.ibm.com/topics/continuous-delivery" target="_blank">Continuous Delivery Overview</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 2: Version Control & Git Integration</h2>
+    <ul>
+        <li><a href="https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows" target="_blank">Git Branching Strategies</a></li>
+        <li><a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions Basics</a></li>
+        <li><a href="https://docs.gitlab.com/ee/ci/" target="_blank">GitLab CI/CD Overview</a></li>
+        <li><a href="https://bitbucket.org/product/features/pipelines" target="_blank">Bitbucket Pipelines</a></li>
+        <li><a href="https://trunkbaseddevelopment.com/" target="_blank">Trunk-Based Development</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 3: CI Pipeline Stages</h2>
+    <ul>
+        <li><a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" target="_blank">Pipeline YAML Syntax</a></li>
+        <li><a href="https://www.jenkins.io/doc/book/pipeline/" target="_blank">Jenkins Pipeline</a></li>
+        <li><a href="https://docs.gitlab.com/ee/ci/yaml/" target="_blank">GitLab CI YAML</a></li>
+        <li><a href="https://circleci.com/docs/" target="_blank">CircleCI Pipelines</a></li>
+        <li><a href="https://docs.travis-ci.com/user/build-stages/" target="_blank">Travis CI Build Stages</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 4: Build Automation</h2>
+    <ul>
+        <li><a href="https://maven.apache.org/guides/index.html" target="_blank">Maven Build Tool</a></li>
+        <li><a href="https://gradle.org/guides/" target="_blank">Gradle Builds</a></li>
+        <li><a href="https://docs.npmjs.com/cli/v10/commands/npm-run-script" target="_blank">NPM Build Scripts</a></li>
+        <li><a href="https://docs.python.org/3/library/setuptools.html" target="_blank">Python Packaging & Builds</a></li>
+        <li><a href="https://bazel.build/" target="_blank">Bazel Build System</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 5: Automated Testing in CI</h2>
+    <ul>
+        <li><a href="https://docs.pytest.org/en/stable/" target="_blank">PyTest for CI</a></li>
+        <li><a href="https://junit.org/junit5/" target="_blank">JUnit Testing</a></li>
+        <li><a href="https://www.selenium.dev/documentation/" target="_blank">Selenium UI Testing</a></li>
+        <li><a href="https://jestjs.io/docs/getting-started" target="_blank">Jest JavaScript Testing</a></li>
+        <li><a href="https://cucumber.io/docs/" target="_blank">BDD with Cucumber</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 6: Containerization & CI/CD</h2>
+    <ul>
+        <li><a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile in CI</a></li>
+        <li><a href="https://docs.docker.com/build/building/multi-stage/" target="_blank">Multi-stage Docker Builds</a></li>
+        <li><a href="https://docs.github.com/en/actions/publishing-packages/about-packages" target="_blank">Pushing Images to Registry</a></li>
+        <li><a href="https://hub.docker.com/" target="_blank">Docker Hub Integration</a></li>
+        <li><a href="https://docs.gitlab.com/ee/user/packages/container_registry/" target="_blank">GitLab Container Registry</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 7: Continuous Deployment</h2>
+    <ul>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank">Deploy to Kubernetes</a></li>
+        <li><a href="https://argo-cd.readthedocs.io/en/stable/" target="_blank">Argo CD GitOps</a></li>
+        <li><a href="https://fluxcd.io/docs/" target="_blank">Flux CD</a></li>
+        <li><a href="https://helm.sh/docs/" target="_blank">Helm Deployments</a></li>
+        <li><a href="https://docs.aws.amazon.com/codepipeline/" target="_blank">AWS CodePipeline</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 8: Secrets, Security & Quality Gates</h2>
+    <ul>
+        <li><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target="_blank">Secrets Management</a></li>
+        <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Security Scans</a></li>
+        <li><a href="https://docs.sonarqube.org/latest/" target="_blank">SonarQube Code Quality</a></li>
+        <li><a href="https://snyk.io/docs/" target="_blank">Snyk Vulnerability Scanning</a></li>
+        <li><a href="https://aquasecurity.github.io/trivy/" target="_blank">Trivy Container Scanning</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 9: Monitoring, Rollbacks & Reliability</h2>
+    <ul>
+        <li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank">Prometheus Monitoring</a></li>
+        <li><a href="https://grafana.com/docs/" target="_blank">Grafana Dashboards</a></li>
+        <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment" target="_blank">Deployment Rollbacks</a></li>
+        <li><a href="https://martinfowler.com/bliki/BlueGreenDeployment.html" target="_blank">Blue-Green Deployment</a></li>
+        <li><a href="https://martinfowler.com/bliki/CanaryRelease.html" target="_blank">Canary Releases</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Level 10: Enterprise CI/CD & Careers</h2>
+    <ul>
+        <li><a href="https://cloud.google.com/architecture/devops" target="_blank">Enterprise DevOps Practices</a></li>
+        <li><a href="https://www.linkedin.com/jobs/ci-cd-engineer/" target="_blank">CI/CD Engineer Roles</a></li>
+        <li><a href="https://roadmap.sh/devops" target="_blank">DevOps Career Roadmap</a></li>
+        <li><a href="https://www.cncf.io/" target="_blank">CNCF Ecosystem</a></li>
+        <li><a href="https://engineering.atspotify.com/" target="_blank">Real-World CI/CD Case Studies</a></li>
+    </ul>
+</section>
+</main>
+
+</body>
+</html>

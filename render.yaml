@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: creators-omniverse
+    env: python
+    buildCommand: ./build.sh
+    startCommand: daphne core.asgi:application --port 10000 --bind 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis-queue
+          property: connectionString
+
+  - type: redis
+    name: redis-queue
+    ipAllowList: [] # Only allow internal connections
